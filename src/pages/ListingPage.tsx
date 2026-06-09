@@ -23,22 +23,35 @@ export function ListingPage() {
     gender,
   );
 
-  // Local input stays instant; the debounced value drives filtering + the URL.
+  // The URL (`search`) is the source of truth. `searchInput` keeps the field
+  // instant while typing; the debounced value is what gets committed to the URL.
   const [searchInput, setSearchInput] = useState(search);
+
+  // Adopt external URL changes (browser back/forward, shared links): when the
+  // query string changes from outside, re-seed the input during render. This
+  // avoids a setState-in-effect and keeps the input from ever desyncing.
+  const [lastUrlSearch, setLastUrlSearch] = useState(search);
+  if (search !== lastUrlSearch) {
+    setLastUrlSearch(search);
+    setSearchInput(search);
+  }
+
   const debouncedSearch = useDebouncedValue(searchInput, SEARCH_DEBOUNCE_MS);
 
+  // Commit settled input to the URL. The `=== searchInput` guard ensures we only
+  // write once the debounce has caught up, so an external URL change can't be
+  // clobbered by a still-lagging debounced value.
   useEffect(() => {
-    if (debouncedSearch !== search) {
+    if (debouncedSearch === searchInput && debouncedSearch !== search) {
       setSearch(debouncedSearch);
     }
-  }, [debouncedSearch, search, setSearch]);
+  }, [debouncedSearch, searchInput, search, setSearch]);
 
   const users = data?.results ?? [];
   const hasNext = users.length === PAGE_SIZE;
 
-  // React Compiler memoises this derivation; it recomputes only when its inputs change.
-  const filteredUsers = filterUsersByQuery(users, debouncedSearch);
-  const isSearching = debouncedSearch.trim().length > 0;
+  const filteredUsers = filterUsersByQuery(users, search);
+  const isSearching = search.trim().length > 0;
   const hasResults = filteredUsers.length > 0;
 
   const handlePageChange = (nextPage: number) => {
@@ -90,7 +103,7 @@ export function ListingPage() {
       ) : !hasResults ? (
         <StateMessage
           icon={<SearchX className="h-12 w-12" />}
-          title={`No matches for "${debouncedSearch.trim()}" on this page`}
+          title={`No matches for "${search.trim()}" on this page`}
           description="Search runs over the current page. Try another page or clear the search."
           action={
             <button

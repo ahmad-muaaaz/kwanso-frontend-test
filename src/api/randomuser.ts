@@ -45,5 +45,27 @@ export async function fetchUsers({
     );
   }
 
-  return (await response.json()) as UsersResponse;
+  // randomuser.me reports some failures as HTTP 200 with an `{ "error": ... }`
+  // body, so a successful status is not enough; validate the payload shape.
+  const payload: unknown = await response.json();
+  if (!isUsersResponse(payload)) {
+    throw new Error(extractApiError(payload));
+  }
+
+  return payload;
+}
+
+function isUsersResponse(value: unknown): value is UsersResponse {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    Array.isArray((value as { results?: unknown }).results)
+  );
+}
+
+function extractApiError(value: unknown): string {
+  if (typeof value === 'object' && value !== null && 'error' in value) {
+    return `Random User API error: ${String((value as { error: unknown }).error)}`;
+  }
+  return 'Unexpected response from the Random User API';
 }
