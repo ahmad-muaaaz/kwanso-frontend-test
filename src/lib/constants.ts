@@ -7,9 +7,9 @@ export const PAGE_SIZE = 12; // Users fetched per page. Chosen to fill the respo
 /**
  * Note on seeding: randomuser.me supports a `seed` for deterministic results,
  * but a seed *overrides* the `gender` filter (it reproduces one fixed set
- * regardless of gender). Because true server-side gender filtering is a core
- * requirement, we deliberately omit the seed and instead keep fetched pages
- * stable within a session via the query cache (see `useUsers`).
+ * regardless of gender). To keep server-side gender filtering reliable, we
+ * omit the seed and instead keep fetched pages stable within a session via the
+ * query cache (see `useUsers`).
  */
 
 /** Top-level fields requested via `inc` to keep the payload lean. */

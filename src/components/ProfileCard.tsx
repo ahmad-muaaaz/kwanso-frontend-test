@@ -44,10 +44,9 @@ interface ProfileCardProps {
 }
 
 /**
- * Public profile card matching the brief's mockup: a light-gray header band and
- * a white body split by a single divider, with a centered avatar straddling it,
- * a headline that changes per tab, and a row of icon tabs with a green caret
- * marking the active one.
+ * Public profile card: a light-gray header band and a white body split by a
+ * single divider, with a centered avatar straddling it, a headline that changes
+ * per tab, and a row of icon tabs with a green bar marking the active one.
  */
 export function ProfileCard({ user }: ProfileCardProps) {
   const [activeTab, setActiveTab] = useState<TabKey>('about');
