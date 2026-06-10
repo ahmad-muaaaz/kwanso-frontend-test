@@ -8,10 +8,8 @@ import type { GenderFilter, UsersResponse } from '../types/user';
 
 export interface FetchUsersParams {
   page: number;
-  /** Optional gender filter applied server-side by the API. */
-  gender?: GenderFilter;
-  /** Lets TanStack Query abort in-flight requests on param changes. */
-  signal?: AbortSignal;
+  gender?: GenderFilter; // Optional gender filter applied server-side by the API.
+  signal?: AbortSignal; // Lets TanStack Query abort in-flight requests on param changes.
 }
 
 /**

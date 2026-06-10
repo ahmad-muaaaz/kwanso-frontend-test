@@ -5,8 +5,6 @@ import type { User } from './user';
  * Typed explicitly so `location.state` is never read as `any`.
  */
 export interface ProfileNavState {
-  /** The selected user: lets the profile render instantly without a refetch. */
-  user: User;
-  /** The listing URL (path + query) to return to, preserving filters/search. */
-  from: string;
+  user: User; // The selected user: lets the profile render instantly without a refetch.
+  from: string; // The listing URL (path + query) to return to, preserving filters/search.
 }

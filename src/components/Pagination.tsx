@@ -1,14 +1,11 @@
 interface PaginationProps {
   page: number;
-  /** Whether the current page returned a full set (i.e. a next page exists). */
-  hasNext: boolean;
+  hasNext: boolean; // Whether the current page returned a full set (i.e. a next page exists).
   onPageChange: (page: number) => void;
-  /** Disables controls while a page transition is in flight. */
-  isFetching?: boolean;
+  isFetching?: boolean; // Disables controls while a page transition is in flight.
 }
 
-/** How many page numbers to show on each side of the current page. */
-const WINDOW = 2;
+const WINDOW = 2; // How many page numbers to show on each side of the current page.
 
 /**
  * The Random User API generates pages on demand and never reports a total

@@ -2,8 +2,7 @@
 
 export const API_BASE_URL = 'https://randomuser.me/api/';
 
-/** Users fetched per page. Chosen to fill the responsive grid evenly. */
-export const PAGE_SIZE = 12;
+export const PAGE_SIZE = 12; // Users fetched per page. Chosen to fill the responsive grid evenly.
 
 /**
  * Note on seeding: randomuser.me supports a `seed` for deterministic results,

@@ -6,10 +6,8 @@ import type { ProfileNavState } from '../types/navigation';
 import type { User, UsersResponse } from '../types/user';
 
 export interface ProfileUserResult {
-  /** The resolved user, or null if it can't be recovered (e.g. cold refresh). */
-  user: User | null;
-  /** Where the "Back" control should navigate. */
-  backPath: string;
+  user: User | null; // The resolved user, or null if it can't be recovered (e.g. cold refresh).
+  backPath: string; // Where the "Back" control should navigate.
 }
 
 /**

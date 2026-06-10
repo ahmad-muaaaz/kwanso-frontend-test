@@ -8,8 +8,7 @@
 
 export type Gender = 'male' | 'female';
 
-/** Gender choices the UI exposes. `''` represents "no filter / all". */
-export type GenderFilter = Gender | '';
+export type GenderFilter = Gender | ''; // Gender choices the UI exposes. `''` represents "no filter / all".
 
 export interface UserName {
   title: string;
@@ -68,8 +67,7 @@ export interface User {
   phone: string;
   cell: string;
   picture: Picture;
-  /** ISO 3166-1 alpha-2 country code, e.g. "US", "FR". */
-  nat: string;
+  nat: string; // ISO 3166-1 alpha-2 country code, e.g. "US", "FR".
 }
 
 export interface ApiInfo {

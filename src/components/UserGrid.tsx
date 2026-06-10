@@ -5,8 +5,7 @@ import { UserCard } from './UserCard';
 
 interface UserGridProps {
   users: User[];
-  /** Listing context woven into each card's profile link. */
-  context: ListingContext;
+  context: ListingContext; // Listing context woven into each card's profile link.
 }
 
 /** Responsive grid of user cards. Purely presentational. */

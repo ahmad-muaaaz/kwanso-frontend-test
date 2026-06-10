@@ -1,6 +1,5 @@
 interface UserMapProps {
-  /** A place Google Maps will geocode, e.g. "Sevilla, Spain". */
-  query: string;
+  query: string; // A place Google Maps will geocode, e.g. "Sevilla, Spain".
   title?: string;
 }
 

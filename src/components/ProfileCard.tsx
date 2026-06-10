@@ -37,8 +37,7 @@ const TABS: ReadonlyArray<TabConfig> = [
   { key: 'login', label: 'Username', heading: 'My username is', icon: Lock },
 ];
 
-/** Active-tab accent: the muted green from the reference design. */
-const ACTIVE_GREEN = '#8bc34a';
+const ACTIVE_GREEN = '#8bc34a'; // Active-tab accent: the muted green from the reference design.
 
 interface ProfileCardProps {
   user: User;

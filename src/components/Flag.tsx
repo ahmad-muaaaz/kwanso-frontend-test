@@ -3,8 +3,7 @@ import { useState } from 'react';
 type FlagSize = 'sm' | 'md' | 'lg';
 
 interface FlagProps {
-  /** ISO 3166-1 alpha-2 country code (the API's `nat` field), e.g. "US". */
-  nat: string;
+  nat: string; // ISO 3166-1 alpha-2 country code (the API's `nat` field), e.g. "US".
   size?: FlagSize;
   className?: string;
 }
