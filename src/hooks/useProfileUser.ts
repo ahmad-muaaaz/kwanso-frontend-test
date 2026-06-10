@@ -1,7 +1,7 @@
 import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import { usersQueryKey } from './useUsers';
-import { parseGender } from './useListingParams';
+import { parseGender, parsePage } from './useListingParams';
 import type { ProfileNavState } from '../types/navigation';
 import type { User, UsersResponse } from '../types/user';
 
@@ -31,7 +31,7 @@ export function useProfileUser(): ProfileUserResult {
     return { user: navState.user, backPath };
   }
 
-  const page = Math.max(1, Number(searchParams.get('page')) || 1);
+  const page = parsePage(searchParams.get('page'));
   const gender = parseGender(searchParams.get('gender'));
   const cached = queryClient.getQueryData<UsersResponse>(
     usersQueryKey(page, gender),

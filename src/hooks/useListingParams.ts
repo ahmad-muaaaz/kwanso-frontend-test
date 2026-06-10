@@ -5,6 +5,11 @@ export function parseGender(value: string | null): GenderFilter {
   return value === 'male' || value === 'female' ? value : '';
 }
 
+export function parsePage(value: string | null): number {
+  const page = Number(value);
+  return Number.isSafeInteger(page) && page >= 1 ? page : 1;
+}
+
 /**
  * Reads and writes the listing's state from the URL query string, making the
  * URL the single source of truth. Persisting here means filters/pagination
@@ -17,7 +22,7 @@ export function parseGender(value: string | null): GenderFilter {
 export function useListingParams() {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const page = Math.max(1, Number(searchParams.get('page')) || 1);
+  const page = parsePage(searchParams.get('page'));
   const gender = parseGender(searchParams.get('gender'));
   const search = searchParams.get('q') ?? '';
 
