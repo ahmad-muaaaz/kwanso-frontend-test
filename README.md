@@ -141,7 +141,7 @@ Filtering:
 ## Performance and Re-render Strategy
 
 - Why this section exists: the brief asks to be mindful of the number of re-renders.
-- React Compiler handles memoization automatically. Components, derived values, and callbacks are memoized by the compiler, so the code stays free of manual `useMemo`/`useCallback`/`React.memo`.
+- The React Compiler (`babel-plugin-react-compiler`, wired in `vite.config.ts`) handles memoization automatically. It memoizes components, derived values, and callbacks at build time, so manual `useMemo`/`useCallback`/`React.memo` are intentionally omitted rather than forgotten.
 - The search input is debounced, so keystrokes do not trigger a filter pass or URL write on every character.
 - `keepPreviousData` and a high `staleTime` avoid redundant fetches. Pages are fetched once and reused for the session, including by the profile page.
 
