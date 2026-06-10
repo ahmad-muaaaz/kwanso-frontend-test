@@ -29,7 +29,7 @@ export function SearchBar({
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         aria-label="Search users"
-        className="w-full rounded-lg border border-slate-200 bg-white py-2 pl-9 pr-9 text-sm text-slate-700 placeholder:text-slate-400 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+        className="w-full rounded-lg border border-slate-200 bg-white py-2 pl-9 pr-9 text-sm text-slate-700 placeholder:text-slate-400 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-100 [&::-webkit-search-cancel-button]:appearance-none"
       />
       {value ? (
         <button

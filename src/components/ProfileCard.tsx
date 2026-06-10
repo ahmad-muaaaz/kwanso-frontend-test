@@ -89,9 +89,9 @@ export function ProfileCard({ user }: ProfileCardProps) {
               className="flex flex-1 flex-col items-center"
             >
               <span
-                className="mb-1.5 h-0 w-0 border-x-[5px] border-b-[6px] border-x-transparent"
+                className="mb-1.5 h-1 w-5 rounded-full"
                 style={{
-                  borderBottomColor: isActive ? ACTIVE_GREEN : 'transparent',
+                  backgroundColor: isActive ? ACTIVE_GREEN : 'transparent',
                 }}
               />
               <Icon
